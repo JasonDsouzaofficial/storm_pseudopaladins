@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rail-Setu </title>
+    <title>Rail-Setu</title>
     <style>
         /* Basic CSS styling */
         body {
@@ -127,7 +127,7 @@
         .user-dropdown {
             position: absolute;
             top: 10px;
-            right: 100px; /* Adjust this value to move the dropdown to the left */
+            right: 20px;
         }
 
         .user-dropdown-content {
@@ -171,11 +171,23 @@
         .problem-summary {
             font-weight: bold;
         }
+
+        /* Made by footer */
+        .made-by {
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    
-    
+    <!-- Include an audio element with no controls -->
+    <audio id="background-audio" controls="false" loop="false" style="display:none;">
+        <source src="horn.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- Logo container with up to four logos -->
     <div class="logo-container">
         <img class="logo" src="logos/logo1.png" alt="logo1">
@@ -184,15 +196,8 @@
         <img class="logo" src="logos/logo4.jpg" alt="logo4">
         <img class="logo" src="logos/logo5.png" alt="logo5">
     </div>
-    
-    <audio id="background-audio" controls="false" loop="false" style="display:none;">
-        <source src="horn.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
 
     <header>
-        <!-- Add an ID to the header for easier targeting -->
         <h1 id="rail-setu">Rail-Setu</h1>
     </header>
     <div class="navbar">
@@ -205,7 +210,7 @@
         <a href="data-analytics.html" target="_blank">Data Analytics</a>
         <!-- User dropdown with Sign Up and Login buttons -->
         <div class="user-dropdown">
-            <span class="user-dropdown-text">New User</span>
+            <span class="user-dropdown-text"><strong style="color: white;">New User</strong></span>
             <div class="user-dropdown-content">
                 <a class="signup-button" href="signup.html">Sign Up</a>
                 <a class="login-button" href="login.html">Login</a>
@@ -250,6 +255,9 @@
         <span>Contact or Enquiries:</span>
         <a href="https://indianrailways.gov.in/" target="_blank">Indian Railways Official Website</a>
     </div>
+    <div class="made-by">
+        Made by: Jason D'souza, Vedant Kadam, Mihir Lad, Mahek Karia
+    </div>
 
     <!-- JavaScript for changing images in the slideshow -->
     <script>
@@ -270,22 +278,22 @@
 
         showSlides(); // Start the slideshow
 
-        // Get the audio element by its ID
-        const audio = document.getElementById("background-audio");
-
-        // Get the header element by its ID
-        const railSetuHeader = document.getElementById("rail-setu");
-
-        // Function to play audio when hovered
-        function playAudioOnHover() {
-            audio.play().catch(function(error) {
-                // Autoplay was prevented, handle the error here if needed
-                console.error("Autoplay prevented: " + error);
-            });
-        }
-
-        // Add the hover event listener to the header
-        railSetuHeader.addEventListener("mouseenter", playAudioOnHover);
+        // Play audio when hovering over the "Rail-Setu" header
+        const railSetuHeader = document.getElementById('rail-setu');
+        const backgroundAudio = document.getElementById('background-audio');
+        railSetuHeader.addEventListener('mouseenter', function() {
+            backgroundAudio.play();
+        });
+        railSetuHeader.addEventListener('mouseleave', function() {
+            backgroundAudio.pause();
+            backgroundAudio.currentTime = 0;
+        });
     </script>
+
+    <!-- Include your audio file in the src attribute below -->
+    <audio id="background-audio" loop="true" style="display: none;">
+        <source src="horn.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
