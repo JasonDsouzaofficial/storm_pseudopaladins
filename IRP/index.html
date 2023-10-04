@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Railways AI/ML Project</title>
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Image slideshow container styles */
+        .slideshow-container {
+            max-width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Images within the slideshow */
+        .mySlides {
+            display: none;
+            width: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            /* Adjust styles for smaller screens */
+            h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .navbar a {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Indian Railways AI/ML Project</h1>
+    </header>
+    <div class="navbar">
+        <!-- Navigation buttons that open new blank pages when clicked -->
+        <a href="realtime-monitoring.html" target="_blank">Real-time Monitoring</a>
+        <a href="crowd-management.html" target="_blank">Crowd Management</a>
+        <a href="cleanliness-maintenance.html" target="_blank">Cleanliness & Maintenance</a>
+        <a href="security-prevention.html" target="_blank">Security & Prevention</a>
+        <a href="resource-optimization.html" target="_blank">Resource Optimization</a>
+        <a href="data-analytics.html" target="_blank">Data Analytics</a>
+    </div>
+    <div class="container">
+        <h2>Welcome to our project!</h2>
+        <p>This is a sample frontend page for the Indian Railways AI/ML project. You can customize it to include information, data visualization, and interactive features related to your project.</p>
+        
+        <!-- Slideshow container with images named "image1," "image2," and so on -->
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="images/image1.jpg" alt="Image 1">
+            </div>
+            <div class="mySlides">
+                <img src="images/image2.jpg" alt="Image 2">
+            </div>
+            <div class="mySlides">
+                <img src="images/image3.jpg" alt="Image 3">
+            </div>
+            <div class="mySlides">
+                <img src="images/image4.jpg" alt="Image 4">
+            </div>
+            <div class="mySlides">
+                <img src="images/image5.jpg" alt="Image 5">
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for changing images in the slideshow -->
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+        showSlides(); // Start the slideshow
+    </script>
+</body>
+</html>
