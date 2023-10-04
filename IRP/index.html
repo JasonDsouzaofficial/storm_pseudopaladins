@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Railways AI/ML Project</title>
+    <title>Rail-Setu </title>
     <style>
         /* Basic CSS styling */
         body {
@@ -43,14 +43,15 @@
         .navbar {
             background-color: #333;
             overflow: hidden;
+            margin-top: 10px;
         }
 
         .navbar a {
             float: left;
-            font-size: 16px;
+            font-size: 18px;
             color: #fff;
             text-align: center;
-            padding: 14px 16px;
+            padding: 18px 20px;
             text-decoration: none;
             cursor: pointer;
         }
@@ -87,15 +88,112 @@
             }
 
             .navbar a {
-                padding: 10px 12px;
-                font-size: 14px;
+                padding: 12px 14px;
+                font-size: 16px;
             }
+        }
+
+        /* Contact/enquiries bar styles */
+        .contact-bar {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .contact-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Logo container styles */
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        /* User dropdown styles */
+        .user-dropdown {
+            position: absolute;
+            top: 10px;
+            right: 100px; /* Adjust this value to move the dropdown to the left */
+        }
+
+        .user-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .user-dropdown:hover .user-dropdown-content {
+            display: block;
+        }
+
+        .user-dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Sign-up and Login buttons */
+        .user-dropdown-content .signup-button, .user-dropdown-content .login-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            text-align: left;
+            padding: 12px 16px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Historical information */
+        .historical-info {
+            margin-top: 20px;
+        }
+
+        /* Problem and solution summary */
+        .problem-summary {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    
+    
+    <!-- Logo container with up to four logos -->
+    <div class="logo-container">
+        <img class="logo" src="logos/logo1.png" alt="logo1">
+        <img class="logo" src="logos/logo2.png" alt="logo2">
+        <img class="logo" src="logos/logo3.png" alt="logo3">
+        <img class="logo" src="logos/logo4.jpg" alt="logo4">
+        <img class="logo" src="logos/logo5.png" alt="logo5">
+    </div>
+    
+    <audio id="background-audio" controls="false" loop="false" style="display:none;">
+        <source src="horn.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
     <header>
-        <h1>Indian Railways AI/ML Project</h1>
+        <!-- Add an ID to the header for easier targeting -->
+        <h1 id="rail-setu">Rail-Setu</h1>
     </header>
     <div class="navbar">
         <!-- Navigation buttons that open new blank pages when clicked -->
@@ -105,10 +203,27 @@
         <a href="security-prevention.html" target="_blank">Security & Prevention</a>
         <a href="resource-optimization.html" target="_blank">Resource Optimization</a>
         <a href="data-analytics.html" target="_blank">Data Analytics</a>
+        <!-- User dropdown with Sign Up and Login buttons -->
+        <div class="user-dropdown">
+            <span class="user-dropdown-text">New User</span>
+            <div class="user-dropdown-content">
+                <a class="signup-button" href="signup.html">Sign Up</a>
+                <a class="login-button" href="login.html">Login</a>
+            </div>
+        </div>
     </div>
     <div class="container">
-        <h2>Welcome to our project!</h2>
-        <p>This is a sample frontend page for the Indian Railways AI/ML project. You can customize it to include information, data visualization, and interactive features related to your project.</p>
+        <!-- Historical information about Indian Railways -->
+        <div class="historical-info">
+            <h2>Historical Information</h2>
+            <p>Indian Railways, one of the world's largest railway networks, has a rich history dating back to the 19th century. It played a significant role in the development of transportation in India, connecting distant regions and fostering economic growth.</p>
+            <p>Over the years, Indian Railways has faced numerous challenges related to passenger management, cleanliness, security, and maintenance due to its sheer scale and complexity.</p>
+        </div>
+        <!-- Problem and solution summary -->
+        <div class="problem-summary">
+            <h2>Problem and Solution Summary</h2>
+            <p>Indian Railways faces challenges in passenger management, cleanliness, security, and maintenance due to its vast network. The integration of AI/ML technologies offers a transformative solution.</p>
+        </div>
         
         <!-- Slideshow container with images named "image1," "image2," and so on -->
         <div class="slideshow-container">
@@ -130,6 +245,12 @@
         </div>
     </div>
 
+    <!-- Contact/enquiries bar with link to Indian Railways official website -->
+    <div class="contact-bar">
+        <span>Contact or Enquiries:</span>
+        <a href="https://indianrailways.gov.in/" target="_blank">Indian Railways Official Website</a>
+    </div>
+
     <!-- JavaScript for changing images in the slideshow -->
     <script>
         let slideIndex = 0;
@@ -148,6 +269,23 @@
         }
 
         showSlides(); // Start the slideshow
+
+        // Get the audio element by its ID
+        const audio = document.getElementById("background-audio");
+
+        // Get the header element by its ID
+        const railSetuHeader = document.getElementById("rail-setu");
+
+        // Function to play audio when hovered
+        function playAudioOnHover() {
+            audio.play().catch(function(error) {
+                // Autoplay was prevented, handle the error here if needed
+                console.error("Autoplay prevented: " + error);
+            });
+        }
+
+        // Add the hover event listener to the header
+        railSetuHeader.addEventListener("mouseenter", playAudioOnHover);
     </script>
 </body>
 </html>
